@@ -106,3 +106,18 @@ func TestPostOrderNonRecursive(t *testing.T) {
 		t.Errorf("Traversal order incorrect, got %v instead of %v", result, expected)
 	}
 }
+
+func TestLeverOrder(t *testing.T) {
+	tree := getTree()
+
+	var result []int
+	var expected = []int{1, 2, 3, 4, 5, 6, 7}
+
+	LeverOrder(tree.Root, func(value int) {
+		result = append(result, value)
+	})
+
+	if !reflect.DeepEqual(result, expected) {
+		t.Errorf("Traversal order incorrect, got %v instead of %v", result, expected)
+	}
+}

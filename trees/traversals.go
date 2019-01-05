@@ -90,3 +90,28 @@ func PostOrderNonRecursive(tree *BinaryTree, cb func(value int)) {
 		}
 	}
 }
+
+func LeverOrder(node *BinaryTreeNode, cb func(value int)) {
+	var tempNode *BinaryTreeNode
+	var queue []*BinaryTreeNode
+
+	if node == nil {
+		return
+	}
+
+	queue = append(queue, node)
+
+	for len(queue) != 0 {
+		tempNode, queue = queue[0], queue[1:]
+		cb(tempNode.Value)
+
+		if tempNode.Left != nil {
+			queue = append(queue, tempNode.Left)
+		}
+
+		if tempNode.Right != nil {
+			queue = append(queue, tempNode.Right)
+		}
+
+	}
+}
