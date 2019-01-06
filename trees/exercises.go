@@ -77,11 +77,73 @@ func Contains(root *BinaryTreeNode, data int) bool {
 }
 
 // Problem-4 Give an algorithm for searching an element in binary tree without recursion.
+func ContainsNonRecursive(node *BinaryTreeNode, data int) bool {
+	var tempNode *BinaryTreeNode
+	var queue []*BinaryTreeNode
+
+	if node == nil {
+		return false
+	}
+
+	queue = append(queue, node)
+
+	for len(queue) != 0 {
+		tempNode, queue = queue[0], queue[1:]
+
+		if tempNode.Value == data {
+			return true
+		}
+
+		if tempNode.Left != nil {
+			queue = append(queue, tempNode.Left)
+		}
+
+		if tempNode.Right != nil {
+			queue = append(queue, tempNode.Right)
+		}
+
+	}
+
+	return false
+}
 
 // Problem-6 Give an algorithm for finding the size of binary tree.
+func Size(node *BinaryTreeNode) int {
+	if node == nil {
+		return 0
+	}
+
+	return Size(node.Left) + Size(node.Right) + 1
+}
 
 // Problem-7 Can we solve Problem-6 without recursion?
+func SizeNonRecursive(node *BinaryTreeNode) int {
+	var tempNode *BinaryTreeNode
+	var queue []*BinaryTreeNode
+	var size = 0
 
+	if node == nil {
+		return 0
+	}
+
+	queue = append(queue, node)
+
+	for len(queue) != 0 {
+		tempNode, queue = queue[0], queue[1:]
+		size += 1
+
+		if tempNode.Left != nil {
+			queue = append(queue, tempNode.Left)
+		}
+
+		if tempNode.Right != nil {
+			queue = append(queue, tempNode.Right)
+		}
+
+	}
+
+	return size
+}
 // Problem-8 Give an algorithm for printing the level order data in reverse order. For example,
 // the output for the below tree should be: 4 5 6 7 2 3 1
 
