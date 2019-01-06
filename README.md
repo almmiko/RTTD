@@ -1,5 +1,5 @@
 # RTTD
-Solutions for different algorithm problems.
+Solutions for different technical problems.
 
 ## Leetcode
 
