@@ -146,11 +146,57 @@ func SizeNonRecursive(node *BinaryTreeNode) int {
 }
 // Problem-8 Give an algorithm for printing the level order data in reverse order. For example,
 // the output for the below tree should be: 4 5 6 7 2 3 1
+func LevelOrderTraversalInReverse(node *BinaryTreeNode, cb func(value int)) {
+	var tempNode *BinaryTreeNode
+	var queue []*BinaryTreeNode
+	var visitedNodes []*BinaryTreeNode
+
+	if node == nil {
+		return
+	}
+
+	queue = append(queue, node)
+
+	for len(queue) != 0 {
+		tempNode, queue = queue[0], queue[1:]
+		visitedNodes = append(visitedNodes, tempNode)
+
+		if tempNode.Right != nil {
+			queue = append(queue, tempNode.Right)
+		}
+
+		if tempNode.Left != nil {
+			queue = append(queue, tempNode.Left)
+		}
+	}
+
+	for i := 1; i <= len(visitedNodes); i++ {
+		cb(visitedNodes[len(visitedNodes) - i].Value)
+	}
+}
 
 // Problem-9 Give an algorithm for deleting the tree.
+func DeleteTree() *BinaryTree {
+	// delete tree struct
+	// tree = nil, without functions
+	return nil
+}
 
 // Problem-10 Give an algorithm for finding the height (or depth) of the binary tree.
+func Depth(node *BinaryTreeNode) int {
+	if node == nil {
+		return 0
+	}
 
+	left := Depth(node.Left) + 1
+	right := Depth(node.Right) + 1
+
+	if left > right {
+		return left
+	} else {
+		return right
+	}
+}
 // Problem-11 Can we solve Problem-10 without recursion?
 
 // Problem-12 Give an algorithm for finding the deepest node of the binary tree.
