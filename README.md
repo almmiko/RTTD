@@ -23,3 +23,9 @@ Solutions for different technical problems.
 
 ##
 [Single Number](https://leetcode.com/problems/single-number/)
+
+104. Maximum Depth of Binary Tree
+226. Invert Binary Tree
+448. Find All Numbers Disappeared in an Array
+617. Merge Two Binary Trees
+771. Jewels and Stones
